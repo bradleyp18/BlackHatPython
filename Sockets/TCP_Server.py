@@ -1,3 +1,4 @@
+from http import client
 import socket
 import threading
 
@@ -14,7 +15,7 @@ def main():
     print(f"Listening on {HOST}:{PORT}")
 
     while True:
-        conn, addr = server.accept()
+        client, addr = server.accept()
         print(f"[*] Accepted connection from {addr[0]}:{addr[1]}")
         client_handler = threading.Thread(target=handle_client, args = (client,))
         client_handler.start()
